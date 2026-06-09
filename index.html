@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUET Marks Calculator 2026 - Calculate CUET UG Score Instantly</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="canonical" href="https://samuels3434s.github.io/Cuet-Eval/">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Free online CUET Marks Calculator 2026. Calculate your CUET UG score instantly by uploading your response sheet HTML. Find subject-wise correct/incorrect marks (+5/-1).">
+  <meta name="keywords" content="cuet marks calculator, cuet marks calculator 2026, cuet score calculator, cuet calculator, cuet evaluator, cuet ug score card, cuet response sheet, cuet answer key calculator, calculate cuet score">
+  <meta name="author" content="@pxl_.dust">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://samuels3434s.github.io/Cuet-Eval/">
+  <meta property="og:title" content="CUET Marks Calculator 2026 - Calculate Score Instantly">
+  <meta property="og:description" content="Free online CUET Marks Calculator 2026. Calculate your CUET UG score in 5 seconds. 100% secure, local, and privacy-friendly.">
+  <meta property="og:image" content="https://samuels3434s.github.io/Cuet-Eval/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://samuels3434s.github.io/Cuet-Eval/">
+  <meta property="twitter:title" content="CUET Marks Calculator 2026 - Calculate Score Instantly">
+  <meta property="twitter:description" content="Free online CUET Marks Calculator 2026. Calculate your CUET UG score in 5 seconds. 100% secure, local, and privacy-friendly.">
+  <meta property="twitter:image" content="https://samuels3434s.github.io/Cuet-Eval/assets/logo.png">
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Premium Modern Stylesheet */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #060a08 0%, #0c2017 100%);
+      --card-bg: rgba(13, 27, 20, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(16, 185, 129, 0.4);
+      
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --primary-glow: rgba(16, 185, 129, 0.3);
+      
+      --correct: #10b981;
+      --correct-bg: rgba(16, 185, 129, 0.15);
+      --correct-border: rgba(16, 185, 129, 0.3);
+      
+      --incorrect: #ef4444;
+      --incorrect-bg: rgba(239, 68, 68, 0.15);
+      --incorrect-border: rgba(239, 68, 68, 0.3);
+      
+      --unattempted: #64748b;
+      --unattempted-bg: rgba(100, 116, 139, 0.15);
+      --unattempted-border: rgba(100, 116, 139, 0.3);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-inverse: #060a08;
+      
+      --font-display: 'Outfit', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Header styling */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #6ee7b7, #10b981, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.025em;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    /* Glassmorphism utility card */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    /* Inputs Section */
+    .setup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .setup-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .input-label {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #a7f3d0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .helper-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-weight: 500;
+    }
+
+    .helper-link:hover {
+      text-decoration: underline;
+    }
+
+    .textarea-wrapper {
+      position: relative;
+    }
+
+    textarea {
+      width: 100%;
+      height: 350px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1rem;
+      color: var(--text-main);
+      font-family: monospace;
+      font-size: 0.85rem;
+      resize: none;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+    
+    /* Custom File Input button styles */
+    .file-upload-wrapper {
+      margin-top: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .file-upload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.5rem 1.25rem;
+      color: #a7f3d0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .file-upload-btn:hover {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    }
+    .file-name-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 220px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .action-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      animation: fadeInUp 0.9s ease;
+    }
+
+    .btn {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 var(--primary-glow);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Results Dashboard styling */
+    .results-view {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+    }
+
+    .stat-card.correct-card::before { background: var(--correct); }
+    .stat-card.incorrect-card::before { background: var(--incorrect); }
+    .stat-card.unattempted-card::before { background: var(--unattempted); }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Main Evaluation Content Layout */
+    .evaluation-layout {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .evaluation-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Sidebar: Subject breakdown */
+    .subjects-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .subject-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .subject-card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateX(4px);
+    }
+
+    .subject-card.active {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: var(--primary);
+    }
+
+    .subj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .subj-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .subj-score {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .subj-score.positive { color: var(--correct); }
+    .subj-score.negative { color: var(--incorrect); }
+
+    .subj-bar-container {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 0.5rem 0;
+    }
+
+    .subj-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+      transition: width 0.8s ease-in-out;
+    }
+
+    .subj-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .badge-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot-correct { background: var(--correct); }
+    .dot-incorrect { background: var(--incorrect); }
+    .dot-unattempted { background: var(--unattempted); }
+
+    /* Right Main Panel: Detail Table */
+    .details-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .table-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      min-width: 250px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 0.5rem 1rem 0.5rem 2.5rem;
+      color: var(--text-main);
+      outline: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Modern Table design */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow-x: auto;
+      max-height: 600px;
+      overflow-y: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      color: #a7f3d0;
+      font-weight: 600;
+      padding: 1rem 1.25rem;
+      font-family: var(--font-display);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background: var(--correct-bg);
+      color: var(--correct);
+      border: 1px solid var(--correct-border);
+    }
+
+    .badge-danger {
+      background: var(--incorrect-bg);
+      color: var(--incorrect);
+      border: 1px solid var(--incorrect-border);
+    }
+
+    .badge-muted {
+      background: var(--unattempted-bg);
+      color: #94a3b8;
+      border: 1px solid var(--unattempted-border);
+    }
+
+    .badge-warn {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .opt-box {
+      font-family: monospace;
+      font-size: 0.8rem;
+      background: rgba(15, 23, 42, 0.4);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .opt-highlight {
+      font-weight: 600;
+    }
+    .opt-highlight.correct {
+      color: var(--correct);
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+    .opt-highlight.incorrect {
+      color: var(--incorrect);
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    /* Actions Footer */
+    .results-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Loader */
+    .loader-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.8);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      animation: fadeIn 1s ease;
+    }
+    footer a {
+      color: #6ee7b7;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    footer a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+    
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+    .modal-card {
+      background: rgba(30, 41, 59, 0.95);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(20px);
+      transition: var(--transition);
+      animation: modalSlideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes modalSlideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 0.75rem;
+    }
+    .modal-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #a7f3d0;
+    }
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: var(--transition);
+    }
+    .modal-close:hover {
+      color: var(--text-main);
+    }
+    .modal-body ol {
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      color: #cbd5e1;
+    }
+    .modal-body li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .modal-body strong {
+      color: #f8fafc;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <img src="assets/logo.png" alt="CUET UG Evaluator Logo" style="height: 80px; margin-bottom: 1.25rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);">
+      <h1 id="app-title">CUET Marks Calculator 2026</h1>
+      <p class="subtitle">Calculate your CUET UG score instantly from your response sheet</p>
+    </header>
+
+    <!-- SETUP VIEW -->
+    <div id="setup-view" class="glass-card">
+      <div class="setup-grid">
+        <!-- Response Sheet HTML -->
+        <div class="input-group">
+          <label class="input-label" for="response-sheet-input">
+            Candidate Response Sheet HTML
+            <a href="#" class="helper-link" onclick="event.preventDefault(); _0x2d8a(true)">How to save HTML?</a>
+          </label>
+          <div class="textarea-wrapper">
+            <textarea id="response-sheet-input" placeholder="Paste the full HTML page source of your NTA response sheet here... (e.g. starting with <html...)"></textarea>
+          </div>
+          <div class="file-upload-wrapper">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Or upload saved file:</span>
+            <label for="response-file-upload" class="file-upload-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+              Choose HTML File
+            </label>
+            <span id="response-file-name" class="file-name-label">No file selected</span>
+            <input type="file" id="response-file-upload" accept=".html,.htm" style="display: none;">
+          </div>
+        </div>
+
+        <!-- Answer Key Text -->
+        <div class="input-group">
+          <label class="input-label" for="answer-key-input">
+            Answer Key text
+            <a href="#" class="helper-link" onclick="event.preventDefault(); _0x7c5d(true)">How to copy key?</a>
+          </label>
+          <div class="textarea-wrapper">
+            <textarea id="answer-key-input" placeholder="Paste the text from the Answer Key page here... (e.g. tables, lists containing Question IDs and Correct Option IDs)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-container">
+        <button id="btn-evaluate" class="btn btn-primary" onclick="_0x7a8b()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          Evaluate Responses
+        </button>
+      </div>
+    </div>
+
+    <!-- RESULTS VIEW -->
+    <div id="results-view" class="results-view">
+      <!-- High Level Stats Row -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Total Score</span>
+          <span id="stat-score" class="stat-value">0</span>
+          <span class="stat-desc" id="stat-score-max">Max: 0</span>
+        </div>
+        <div class="stat-card correct-card">
+          <span class="stat-label">Correct Answers</span>
+          <span id="stat-correct" class="stat-value">0</span>
+          <span class="stat-desc" id="stat-correct-marks">0 Marks</span>
+        </div>
+        <div class="stat-card incorrect-card">
+          <span class="stat-label">Incorrect Answers</span>
+          <span id="stat-incorrect" class="stat-value">0</span>
+          <span class="stat-desc" id="stat-incorrect-marks">0 Marks</span>
+        </div>
+        <div class="stat-card unattempted-card">
+          <span class="stat-label">Accuracy</span>
+          <span id="stat-accuracy" class="stat-value">0%</span>
+          <span class="stat-desc" id="stat-attempted-desc">0 / 0 Attempted</span>
+        </div>
+      </div>
+
+      <!-- Main Layout -->
+      <div class="evaluation-layout">
+        <!-- Sidebar with Subject List -->
+        <div class="subjects-sidebar" id="subjects-container">
+          <!-- Dynamically populated subject cards -->
+        </div>
+
+        <!-- Main details section -->
+        <div class="details-panel">
+          <!-- Filters & Search -->
+          <div class="table-actions">
+            <div class="filter-tabs">
+              <button class="tab-btn active" onclick="_0x4b3a('all', this)">All</button>
+              <button class="tab-btn" onclick="_0x4b3a('correct', this)">Correct</button>
+              <button class="tab-btn" onclick="_0x4b3a('incorrect', this)">Incorrect</button>
+              <button class="tab-btn" onclick="_0x4b3a('unattempted', this)">Unattempted</button>
+            </div>
+            
+            <div class="search-input-wrapper">
+              <span class="search-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </span>
+              <input type="text" id="search-bar" class="search-input" placeholder="Search by Question ID..." oninput="_0x1d2c(this.value)">
+            </div>
+          </div>
+
+          <!-- Questions Table -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 80px;">Q.No</th>
+                  <th>Question ID</th>
+                  <th>Chosen Option</th>
+                  <th>Correct Option</th>
+                  <th>Status</th>
+                  <th style="width: 90px; text-align: right;">Marks</th>
+                </tr>
+              </thead>
+              <tbody id="questions-table-body">
+                <!-- Dynamically populated question rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Footer Action Buttons -->
+          <div class="results-footer">
+            <button class="btn btn-secondary" onclick="_0x5a2b()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              Evaluate Another Sheet
+            </button>
+            <div class="btn-group">
+              <button class="btn btn-secondary" onclick="_0x3f6e('csv')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                Export CSV
+              </button>
+              <button class="btn btn-secondary" onclick="_0x3f6e('json')">Export JSON</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="_0x8f1c">
+    <p style="display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;">
+      Made with ❤️ by 
+      <img id="_0x7c1f" src="assets/pfp.png" onerror="this.style.display='none'" alt="" style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(16, 185, 129, 0.4); object-fit: cover;">
+      <a id="_0x3b2a" href="https://instagram.com/pxl_.dust" target="_blank">@pxl_.dust</a>
+    </p>
+  </footer>
+
+  <!-- How to Save Response Sheet Modal -->
+  <div id="modal-how-to" class="modal-overlay" onclick="_0x1b4c(event)">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>How to Save Response Sheet</h2>
+        <button class="modal-close" onclick="_0x2d8a(false)">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <li>Open your <strong>Response Sheet</strong> on your computer.</li>
+          <li>Click the <strong>three dots</strong> in the top-right corner of your browser.</li>
+          <li>Click on <strong>Cast, save and share</strong>.</li>
+          <li>Click on <strong>Save page as...</strong> (or press <strong>Ctrl + S</strong>).</li>
+          <li>In the save dialog, click the format dropdown and select <strong>"Webpage, HTML Only"</strong>.</li>
+          <li>Click <strong>Save</strong>.</li>
+          <li>Upload that saved HTML file using the button below.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to Copy Answer Key Modal -->
+  <div id="modal-key-how-to" class="modal-overlay" onclick="_0x9e2f(event)">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>How to Copy Answer Key</h2>
+        <button class="modal-close" onclick="_0x7c5d(false)">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <li>Log in to your portal and open the <strong>Answer Key challenge page</strong>.</li>
+          <li>Select and highlight the contents of the answer key table (or press <strong>Ctrl + A</strong> to select everything on the page).</li>
+          <li>Copy it to your clipboard by pressing <strong>Ctrl + C</strong>.</li>
+          <li>Paste the copied text directly into the textbox on this page (<strong>Ctrl + V</strong>).</li>
+          <li><em>Note: The evaluator will automatically scan the pasted text to find and pair up the Question IDs and Correct Option IDs.</em></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Animation Overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="spinner"></div>
+    <div style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 500;">Analyzing Response Sheet...</div>
+  </div>
+
+  <script>
+let _0x8b32 = [];
+let _0x3e1a = {};
+let _0x4c9f = {};
+let _0x7b5a = "\x61\x6c\x6c";
+let _0x1f2e = "\x61\x6c\x6c";
+let _0x6d5c = "";
+function _0x9a8b(_0x9c3d) {
+const _0x4e7f = /Section\s*:\s*(?:&nbsp;)?\s*(?:<\/span>)?\s*<span class="bold">([^<]+)<\/span>/gi;
+let sections = [];
+let match;
+while ((match = _0x4e7f.exec(_0x9c3d)) !== null) {
+sections.push({
+name: match[1].trim(),
+index: match.index
+});
+}
+if (sections.length === 0) {
+const fallbackRegex = /Section\s*:\s*(?:&nbsp;)?\s*([^<]+)/gi;
+while ((match = fallbackRegex.exec(_0x9c3d)) !== null) {
+sections.push({
+name: match[1].trim().replace(/<\/?[^>]+(>|$)/g, ""),
+index: match.index
+});
+}
+}
+const _0x6a1f = /<div class="question-pnl"/gi;
+let _0x7c2b = [];
+while ((match = _0x6a1f.exec(_0x9c3d)) !== null) {
+_0x7c2b.push(match.index);
+}
+const questions = [];
+for (let i = 0; i < _0x7c2b.length; i++) {
+const startIdx = _0x7c2b[i];
+const endIdx = (i + 1 < _0x7c2b.length) ? _0x7c2b[i+1] : _0x9c3d.length;
+const _0x1d3f = _0x9c3d.substring(startIdx, endIdx);
+let currentSection = "\x47\x65\x6e\x65\x72\x61\x6c\x20\x53\x65\x63\x74\x69\x6f\x6e";
+for (let s of sections) {
+if (s.index < startIdx) {
+currentSection = s.name;
+} else {
+break;
+}
+}
+let qId = "";
+const qIdMatch = _0x1d3f.match(/Question ID\s*:\s*<\/td>\s*<td[^>]*>(\d+)/i);
+if (qIdMatch) {
+qId = qIdMatch[1].trim();
+} else {
+const broadQIdMatch = _0x1d3f.match(/Question ID\s*:\s*<\/td>\s*<td[^>]*>\s*<b>\s*(\d+)/i) || _0x1d3f.match(/Question ID\s*:\s*<\/td>\s*<td>\s*(\d+)/i);
+if (broadQIdMatch) qId = broadQIdMatch[1].trim();
+}
+if (!qId) continue;
+const options = {};
+for (let optNum = 1; optNum <= 4; optNum++) {
+const optMatch = _0x1d3f.match(new RegExp(`Option ${optNum} ID\\s*:\\s*</td>\\s*<td[^>]*>(\\d+)`, 'i'));
+if (optMatch) {
+options[optNum] = optMatch[1].trim();
+}
+}
+let status = "\x4e\x6f\x74\x20\x41\x6e\x73\x77\x65\x72\x65\x64";
+const statusMatch = _0x1d3f.match(/Status\s*:\s*<\/td>\s*<td[^>]*>([^<]+)/i);
+if (statusMatch) {
+status = statusMatch[1].trim();
+}
+let chosenOption = "--";
+const chosenMatch = _0x1d3f.match(/Chosen Option\s*:\s*<\/td>\s*<td[^>]*>([^<]+)/i);
+if (chosenMatch) {
+chosenOption = chosenMatch[1].trim();
+}
+let _0x8d9f = null;
+if (options[chosenOption]) {
+_0x8d9f = options[chosenOption];
+}
+questions.push({
+section: currentSection,
+questionId: qId,
+options: options,
+status: status,
+chosenOption: chosenOption,
+_0x8d9f: _0x8d9f
+});
+}
+return questions;
+}
+function _0x5c4d(keyText) {
+const numberRegex = /\b\d{10,15}\b/g;
+const allNumbers = keyText.match(numberRegex) || [];
+const keyDict = {};
+let i = 0;
+while (i < allNumbers.length - 1) {
+const num1 = allNumbers[i];
+const num2 = allNumbers[i+1];
+if (num1.length === 12 && num2.length === 13) {
+keyDict[num1] = num2;
+i += 2;
+} else if (num1.length === 12 && num2.length === 12) {
+keyDict[num1] = num2;
+i += 2;
+} else {
+i += 1;
+}
+}
+if (Object.keys(keyDict).length === 0 && allNumbers.length >= 2) {
+for (let idx = 0; idx < allNumbers.length - 1; idx += 2) {
+keyDict[allNumbers[idx]] = allNumbers[idx+1];
+}
+}
+return keyDict;
+}
+function _0x2e1f(questions, answerKey) {
+const results = {};
+questions.forEach(q => {
+const sec = q.section;
+if (!results[sec]) {
+results[sec] = {
+totalQuestions: 0,
+attempted: 0,
+correct: 0,
+incorrect: 0,
+score: 0,
+details: []
+};
+}
+const qId = q.questionId;
+const chosenId = q._0x8d9f;
+const correctId = answerKey[qId];
+let evaluation = "\x55\x6e\x61\x74\x74\x65\x6d\x70\x74\x65\x64";
+let marks = 0;
+if (chosenId) {
+results[sec].attempted++;
+if (correctId) {
+if (chosenId === correctId) {
+evaluation = "\x43\x6f\x72\x72\x65\x63\x74";
+marks = 5;
+results[sec].correct++;
+} else {
+evaluation = "\x49\x6e\x63\x6f\x72\x72\x65\x63\x74";
+marks = -1;
+results[sec].incorrect++;
+}
+} else {
+evaluation = "\x4b\x65\x79\x20\x4d\x69\x73\x73\x69\x6e\x67";
+marks = 0;
+}
+} else {
+evaluation = "\x55\x6e\x61\x74\x74\x65\x6d\x70\x74\x65\x64";
+marks = 0;
+}
+results[sec].totalQuestions++;
+results[sec].score += marks;
+results[sec].details.push({
+...q,
+_0x3f2a: correctId || "\x4e\x6f\x74\x20\x46\x6f\x75\x6e\x64",
+evaluation: evaluation,
+marks: marks
+});
+});
+return results;
+}
+function _0x7a8b() {
+const sheetHtml = document.getElementById("\x72\x65\x73\x70\x6f\x6e\x73\x65\x2d\x73\x68\x65\x65\x74\x2d\x69\x6e\x70\x75\x74").value.trim();
+const keyText = document.getElementById("\x61\x6e\x73\x77\x65\x72\x2d\x6b\x65\x79\x2d\x69\x6e\x70\x75\x74").value.trim();
+if (!sheetHtml) {
+alert("Please paste the Response Sheet HTML source.");
+return;
+}
+if (!keyText) {
+alert("Please paste the Answer Key text.");
+return;
+}
+document.getElementById("loader").style.display = "flex";
+setTimeout(() => {
+try {
+_0x8b32 = _0x9a8b(sheetHtml);
+_0x3e1a = _0x5c4d(keyText);
+if (_0x8b32.length === 0) {
+throw new Error("No questions could be parsed. Please check if the HTML is correct and complete.");
+}
+_0x4c9f = _0x2e1f(_0x8b32, _0x3e1a);
+_0x3c2d();
+document.getElementById("setup-view").style.display = "none";
+document.getElementById("results-view").style.display = "block";
+} catch (error) {
+alert("Error analyzing files: " + error.message);
+} finally {
+document.getElementById("loader").style.display = "none";
+}
+}, 500);
+}
+function _0x3c2d() {
+let _0x1f7b = 0;
+let _0x8e5c = 0;
+let _0x3a4f = 0;
+let _0x9b2d = 0;
+let _0x7c4e = 0;
+const _0x6f3b = document.getElementById("\x73\x75\x62\x6a\x65\x63\x74\x73\x2d\x63\x6f\x6e\x74\x61\x69\x6e\x65\x72");
+_0x6f3b.innerHTML = "";
+const _0x5d9c = document.createElement("div");
+_0x5d9c.className = `subject-card ${_0x7b5a === "\x61\x6c\x6c" ? "active" : ""}`;
+_0x5d9c.onclick = () => _0x9e8f("\x61\x6c\x6c");
+_0x5d9c.innerHTML = `
+<div class="subj-header">
+<span class="subj-name">All Subjects</span>
+<span class="subj-score" id="all-subj-score-badge">0</span>
+</div>
+<div class="subj-bar-container">
+<div class="subj-bar" id="all-subj-progress" style="width: 0%;"></div>
+</div>
+<div class="subj-details">
+<span class="badge-count"><span class="badge-dot dot-correct"></span><span id="all-correct-cnt">0</span></span>
+<span class="badge-count"><span class="badge-dot dot-incorrect"></span><span id="all-incorrect-cnt">0</span></span>
+<span class="badge-count"><span class="badge-dot dot-unattempted"></span><span id="all-unattempted-cnt">0</span></span>
+</div>
+`;
+_0x6f3b.appendChild(_0x5d9c);
+Object.entries(_0x4c9f).forEach(([subjectName, stats]) => {
+_0x1f7b += stats.score;
+_0x8e5c += stats.totalQuestions;
+_0x3a4f += stats.correct;
+_0x9b2d += stats.incorrect;
+_0x7c4e += stats.attempted;
+const _0x8b4f = stats.totalQuestions * 5;
+const _0x9c1f = Math.max(0, Math.min(100, (stats.score / _0x8b4f) * 100));
+const card = document.createElement("div");
+card.className = `subject-card ${_0x7b5a === subjectName ? "active" : ""}`;
+card.onclick = () => _0x9e8f(subjectName);
+card.innerHTML = `
+<div class="subj-header">
+<span class="subj-name">${subjectName}</span>
+<span class="subj-score ${stats.score >= 0 ? "positive" : "negative"}">${stats.score}</span>
+</div>
+<div class="subj-bar-container">
+<div class="subj-bar" style="width: ${_0x9c1f}%; background: ${stats.score >= 0 ? 'var(--correct)' : 'var(--incorrect)'}"></div>
+</div>
+<div class="subj-details">
+<span class="badge-count"><span class="badge-dot dot-correct"></span>${stats.correct}</span>
+<span class="badge-count"><span class="badge-dot dot-incorrect"></span>${stats.incorrect}</span>
+<span class="badge-count"><span class="badge-dot dot-unattempted"></span>${stats.totalQuestions - stats.attempted}</span>
+</div>
+`;
+_0x6f3b.appendChild(card);
+});
+document.getElementById("\x73\x74\x61\x74\x2d\x73\x63\x6f\x72\x65").textContent = _0x1f7b;
+document.getElementById("\x73\x74\x61\x74\x2d\x73\x63\x6f\x72\x65\x2d\x6d\x61\x78").textContent = `Max Marks: ${_0x8e5c * 5}`;
+document.getElementById("\x73\x74\x61\x74\x2d\x63\x6f\x72\x72\x65\x63\x74").textContent = _0x3a4f;
+document.getElementById("\x73\x74\x61\x74\x2d\x63\x6f\x72\x72\x65\x63\x74\x2d\x6d\x61\x72\x6b\x73").textContent = `+${_0x3a4f * 5} Marks`;
+document.getElementById("\x73\x74\x61\x74\x2d\x69\x6e\x63\x6f\x72\x72\x65\x63\x74").textContent = _0x9b2d;
+document.getElementById("\x73\x74\x61\x74\x2d\x69\x6e\x63\x6f\x72\x72\x65\x63\x74\x2d\x6d\x61\x72\x6b\x73").textContent = `-${_0x9b2d} Marks`;
+const accuracy = _0x7c4e > 0 ? Math.round((_0x3a4f / _0x7c4e) * 100) : 0;
+document.getElementById("\x73\x74\x61\x74\x2d\x61\x63\x63\x75\x72\x61\x63\x79").textContent = `${accuracy}%`;
+document.getElementById("\x73\x74\x61\x74\x2d\x61\x74\x74\x65\x6d\x70\x74\x65\x64\x2d\x64\x65\x73\x63").textContent = `${_0x7c4e} / ${_0x8e5c} Attempted`;
+document.getElementById("all-subj-score-badge").textContent = _0x1f7b;
+document.getElementById("all-subj-score-badge").className = `subj-score ${_0x1f7b >= 0 ? "positive" : "negative"}`;
+document.getElementById("all-subj-progress").style.width = `${Math.max(0, Math.min(100, (_0x1f7b / (_0x8e5c * 5)) * 100))}%`;
+document.getElementById("all-subj-progress").style.background = _0x1f7b >= 0 ? 'var(--correct)' : 'var(--incorrect)';
+document.getElementById("all-correct-cnt").textContent = _0x3a4f;
+document.getElementById("all-incorrect-cnt").textContent = _0x9b2d;
+document.getElementById("all-unattempted-cnt").textContent = _0x8e5c - _0x7c4e;
+_0x8f7a();
+}
+function _0x9e8f(subjName) {
+_0x7b5a = subjName;
+const cards = document.querySelectorAll(".subject-card");
+cards.forEach(card => {
+const nameNode = card.querySelector(".subj-name");
+if (nameNode && nameNode.textContent === (subjName === "\x61\x6c\x6c" ? "\x41\x6c\x6c\x20\x53\x75\x62\x6a\x65\x63\x74\x73" : subjName)) {
+card.classList.add("active");
+} else {
+card.classList.remove("active");
+}
+});
+_0x8f7a();
+}
+function _0x4b3a(filterType, btnNode) {
+_0x1f2e = filterType;
+const filterBtns = document.querySelectorAll(".filter-tabs .tab-btn");
+filterBtns.forEach(btn => btn.classList.remove("active"));
+btnNode.classList.add("active");
+_0x8f7a();
+}
+function _0x1d2c(val) {
+_0x6d5c = val.trim().toLowerCase();
+_0x8f7a();
+}
+function _0x8f7a() {
+const _0x4a7f = document.getElementById("\x71\x75\x65\x73\x74\x69\x6f\x6e\x73\x2d\x74\x61\x62\x6c\x65\x2d\x62\x6f\x64\x79");
+_0x4a7f.innerHTML = "";
+let list = [];
+if (_0x7b5a === "\x61\x6c\x6c") {
+Object.values(_0x4c9f).forEach(subj => {
+list = list.concat(subj.details);
+});
+} else if (_0x4c9f[_0x7b5a]) {
+list = _0x4c9f[_0x7b5a].details;
+}
+if (_0x1f2e === "\x63\x6f\x72\x72\x65\x63\x74") {
+list = list.filter(q => q.evaluation === "\x43\x6f\x72\x72\x65\x63\x74");
+} else if (_0x1f2e === "\x69\x6e\x63\x6f\x72\x72\x65\x63\x74") {
+list = list.filter(q => q.evaluation === "\x49\x6e\x63\x6f\x72\x72\x65\x63\x74");
+} else if (_0x1f2e === "\x75\x6e\x61\x74\x74\x65\x6d\x70\x74\x65\x64") {
+list = list.filter(q => q.evaluation === "\x55\x6e\x61\x74\x74\x65\x6d\x70\x74\x65\x64");
+}
+if (_0x6d5c) {
+list = list.filter(q => q.questionId.includes(_0x6d5c));
+}
+if (list.length === 0) {
+_0x4a7f.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 3rem;">No questions matched the active filters.</td></tr>`;
+return;
+}
+list.forEach((q, idx) => {
+let _0x9b4c = "";
+if (q.evaluation === "\x43\x6f\x72\x72\x65\x63\x74") {
+_0x9b4c = `<span class="badge badge-success">Correct</span>`;
+} else if (q.evaluation === "\x49\x6e\x63\x6f\x72\x72\x65\x63\x74") {
+_0x9b4c = `<span class="badge badge-danger">Incorrect</span>`;
+} else if (q.evaluation === "\x55\x6e\x61\x74\x74\x65\x6d\x70\x74\x65\x64") {
+_0x9b4c = `<span class="badge badge-muted">Unattempted</span>`;
+} else {
+_0x9b4c = `<span class="badge badge-warn">${q.evaluation}</span>`;
+}
+let _0x6e2f = "";
+let _0x4d3c = "";
+if (q.chosenOption !== "--") {
+_0x6e2f = `
+<div>Option ${q.chosenOption}</div>
+<div class="opt-box">${q._0x8d9f}</div>
+`;
+} else {
+_0x6e2f = `<span style="color: var(--text-muted);">--</span>`;
+}
+if (q._0x3f2a && q._0x3f2a !== "\x4e\x6f\x74\x20\x46\x6f\x75\x6e\x64") {
+let optionNum = "Unknown";
+Object.entries(q.options).forEach(([num, id]) => {
+if (id === q._0x3f2a) optionNum = num;
+});
+_0x4d3c = `
+<div>Option ${optionNum}</div>
+<div class="opt-box">${q._0x3f2a}</div>
+`;
+} else {
+_0x4d3c = `<span style="color: var(--text-muted);">Not in Key</span>`;
+}
+const row = document.createElement("tr");
+row.innerHTML = `
+<td style="color: var(--text-muted);">${idx + 1}</td>
+<td>
+<div style="font-weight: 500;">${q.questionId}</div>
+<div style="font-size: 0.75rem; color: var(--text-muted);">${q.section}</div>
+</td>
+<td>${_0x6e2f}</td>
+<td>${_0x4d3c}</td>
+<td>${_0x9b4c}</td>
+<td style="text-align: right; font-weight: 700; color: ${q.marks > 0 ? 'var(--correct)' : q.marks < 0 ? 'var(--incorrect)' : 'var(--text-muted)'}">
+${q.marks > 0 ? '+' : ''}${q.marks}
+</td>
+`;
+_0x4a7f.appendChild(row);
+});
+}
+function _0x5a2b() {
+if (confirm("Are you sure you want to discard these results and evaluate another response sheet?")) {
+document.getElementById("\x72\x65\x73\x70\x6f\x6e\x73\x65\x2d\x73\x68\x65\x65\x74\x2d\x69\x6e\x70\x75\x74").value = "";
+document.getElementById("\x61\x6e\x73\x77\x65\x72\x2d\x6b\x65\x79\x2d\x69\x6e\x70\x75\x74").value = "";
+document.getElementById("results-view").style.display = "none";
+document.getElementById("setup-view").style.display = "block";
+_0x8b32 = [];
+_0x3e1a = {};
+_0x4c9f = {};
+_0x7b5a = "\x61\x6c\x6c";
+_0x1f2e = "\x61\x6c\x6c";
+_0x6d5c = "";
+}
+}
+function _0x3f6e(format) {
+let list = [];
+Object.entries(_0x4c9f).forEach(([subjectName, subj]) => {
+subj.details.forEach(q => {
+list.push({
+subject: subjectName,
+questionId: q.questionId,
+status: q.status,
+chosenOption: q.chosenOption,
+_0x8d9f: q._0x8d9f || "N/A",
+_0x3f2a: q._0x3f2a || "N/A",
+result: q.evaluation,
+marks: q.marks
+});
+});
+});
+if (format === 'json') {
+const _0x9c2b = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(list, null, 2));
+const downloadAnchor = document.createElement('a');
+downloadAnchor.setAttribute("href",     _0x9c2b);
+downloadAnchor.setAttribute("download", `cuet_results_${new Date().toISOString().split('T')[0]}.json`);
+document.body.appendChild(downloadAnchor);
+downloadAnchor.click();
+downloadAnchor.remove();
+} else if (format === 'csv') {
+let _0x6e7b = "data:text/csv;charset=utf-8,Subject,Question ID,Original Status,Chosen Option,Chosen Option ID,Correct Option ID,Result,Marks\n";
+list.forEach(r => {
+_0x6e7b += `"${r.subject}","${r.questionId}","${r.status}","${r.chosenOption}","${r._0x8d9f}","${r._0x3f2a}","${r.result}",${r.marks}\n`;
+});
+const encodedUri = encodeURI(_0x6e7b);
+const downloadAnchor = document.createElement('a');
+downloadAnchor.setAttribute("href", encodedUri);
+downloadAnchor.setAttribute("download", `cuet_results_${new Date().toISOString().split('T')[0]}.csv`);
+document.body.appendChild(downloadAnchor);
+downloadAnchor.click();
+downloadAnchor.remove();
+}
+}
+document.getElementById('response-file-upload').addEventListener('change', function(e) {
+const file = e.target.files[0];
+if (!file) return;
+document.getElementById('\x72\x65\x73\x70\x6f\x6e\x73\x65\x2d\x66\x69\x6c\x65\x2d\x6e\x61\x6d\x65').textContent = file.name;
+const reader = new FileReader();
+reader.onload = function(evt) {
+document.getElementById('\x72\x65\x73\x70\x6f\x6e\x73\x65\x2d\x73\x68\x65\x65\x74\x2d\x69\x6e\x70\x75\x74').value = evt.target.result;
+};
+reader.readAsText(file);
+});
+document.getElementById('answer-file-upload').addEventListener('change', function(e) {
+const file = e.target.files[0];
+if (!file) return;
+const reader = new FileReader();
+reader.onload = function(evt) {
+document.getElementById('\x61\x6e\x73\x77\x65\x72\x2d\x6b\x65\x79\x2d\x69\x6e\x70\x75\x74').value = evt.target.result;
+};
+reader.readAsText(file);
+});
+function _0x2d8a(show) {
+const modal = document.getElementById("modal-how-to");
+modal.style.display = show ? "flex" : "none";
+}
+function _0x1b4c(event) {
+if (event.target === document.getElementById("modal-how-to")) {
+_0x2d8a(false);
+}
+}
+function _0x7c5d(show) {
+const modal = document.getElementById("modal-key-how-to");
+modal.style.display = show ? "flex" : "none";
+}
+function _0x9e2f(event) {
+if (event.target === document.getElementById("modal-key-how-to")) {
+_0x7c5d(false);
+}
+}
+function _0x9b7e() {
+const link = document.getElementById("_0x3b2a");
+const footer = document.getElementById("_0x8f1c");
+const _0x5f2d = link &&
+link.getAttribute("href") === "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x69\x6e\x73\x74\x61\x67\x72\x61\x6d\x2e\x63\x6f\x6d\x2f\x70\x78\x6c\x5f\x2e\x64\x75\x73\x74" &&
+link.textContent.includes("\x70\x78\x6c\x5f\x2e\x64\x75\x73\x74") &&
+footer &&
+window.getComputedStyle(footer).display !== "none" &&
+window.getComputedStyle(footer).visibility !== "hidden" &&
+parseFloat(window.getComputedStyle(footer).opacity) > 0;
+if (!_0x5f2d) {
+_0x7a8b = function() {
+alert("\x45\x72\x72\x6f\x72\x3a\x20\x54\x68\x69\x73\x20\x63\x6f\x70\x79\x20\x6f\x66\x20\x74\x68\x65\x20\x65\x76\x61\x6c\x75\x61\x74\x6f\x72\x20\x68\x61\x73\x20\x62\x65\x65\x6e\x20\x6d\x6f\x64\x69\x66\x69\x65\x64\x2e\x20\x50\x6c\x65\x61\x73\x65\x20\x75\x73\x65\x20\x74\x68\x65\x20\x6f\x66\x66\x69\x63\x69\x61\x6c\x20\x76\x65\x72\x73\x69\x6f\x6e\x20\x62\x79\x20\x40\x70\x78\x6c\x5f\x2e\x64\x75\x73\x74\x20\x61\x74\x20\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x61\x6d\x75\x65\x6c\x73\x33\x34\x33\x34\x73\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x43\x75\x65\x74\x2d\x45\x76\x61\x6c\x2f");
+window.location.href = "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x61\x6d\x75\x65\x6c\x73\x33\x34\x33\x34\x73\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x43\x75\x65\x74\x2d\x45\x76\x61\x6c\x2f";
+};
+document.body.innerHTML = `
+<div style="background:#060a08; color:#f43f5e; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:2rem; font-family:sans-serif;">
+<h1 style="font-size:2rem; margin-bottom:1rem;">⚠️ Tampering Detected</h1>
+<p style="font-size:1.1rem; max-width:600px; color:#cbd5e1; margin-bottom:2rem;">This website has been illegally copied or modified. The original, authentic CUET Marks Calculator by @pxl_.dust is available at the link below.</p>
+<a href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x61\x6d\x75\x65\x6c\x73\x33\x34\x33\x34\x73\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x43\x75\x65\x74\x2d\x45\x76\x61\x6c\x2f" style="background:#10b981; color:#fff; padding:0.75rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow:0 4px 15px rgba(16,185,129,0.3);">Go to Official Calculator</a>
+</div>
+`;
+}
+}
+_0x9b7e();
+setInterval(_0x9b7e, 1000);
+</script>
+</body>
+</html>
