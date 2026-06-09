@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://samuels3434s.github.io/Cuet-Eval/sitemap.xml
+Sitemap: https://cueteval.netlify.app/sitemap.xml
