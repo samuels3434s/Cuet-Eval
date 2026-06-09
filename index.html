@@ -867,6 +867,15 @@
           <div class="textarea-wrapper">
             <textarea id="answer-key-input" placeholder="Paste the text from the Answer Key page here... (e.g. tables, lists containing Question IDs and Correct Option IDs)"></textarea>
           </div>
+          <div class="file-upload-wrapper">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Or upload saved file:</span>
+            <label for="answer-file-upload" class="file-upload-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+              Choose Text File
+            </label>
+            <span id="answer-file-name" class="file-name-label">No file selected</span>
+            <input type="file" id="answer-file-upload" accept=".txt,.html,.htm" style="display: none;">
+          </div>
         </div>
       </div>
 
@@ -1454,7 +1463,7 @@ downloadAnchor.click();
 downloadAnchor.remove();
 }
 }
-document.getElementById('response-file-upload').addEventListener('change', function(e) {
+document.getElementById('\x72\x65\x73\x70\x6f\x6e\x73\x65\x2d\x66\x69\x6c\x65\x2d\x75\x70\x6c\x6f\x61\x64').addEventListener('change', function(e) {
 const file = e.target.files[0];
 if (!file) return;
 document.getElementById('\x72\x65\x73\x70\x6f\x6e\x73\x65\x2d\x66\x69\x6c\x65\x2d\x6e\x61\x6d\x65').textContent = file.name;
@@ -1464,9 +1473,10 @@ document.getElementById('\x72\x65\x73\x70\x6f\x6e\x73\x65\x2d\x73\x68\x65\x65\x7
 };
 reader.readAsText(file);
 });
-document.getElementById('answer-file-upload').addEventListener('change', function(e) {
+document.getElementById('\x61\x6e\x73\x77\x65\x72\x2d\x66\x69\x6c\x65\x2d\x75\x70\x6c\x6f\x61\x64').addEventListener('change', function(e) {
 const file = e.target.files[0];
 if (!file) return;
+document.getElementById('\x61\x6e\x73\x77\x65\x72\x2d\x66\x69\x6c\x65\x2d\x6e\x61\x6d\x65').textContent = file.name;
 const reader = new FileReader();
 reader.onload = function(evt) {
 document.getElementById('\x61\x6e\x73\x77\x65\x72\x2d\x6b\x65\x79\x2d\x69\x6e\x70\x75\x74').value = evt.target.result;
